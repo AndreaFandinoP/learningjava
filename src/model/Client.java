@@ -19,6 +19,10 @@ public class Client extends User {
         return super.getEstado();
     }
 
+    public String toString(){
+        return "Soy un cliente";
+    }
+
 
 }
 
