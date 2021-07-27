@@ -53,9 +53,11 @@ public class Wallet {                                       // Siempre son públ
         this.tieneLimite = newTieneLimite;
     }
 
-    public String saveMoney(int value){
+    public String saveMoney(int value) throws Exception{
         if (saldo + value > CAPACIDAD_MAXIMA && tieneLimite){
-            return "No se puede superar el límite" + CAPACIDAD_MAXIMA;
+            
+            throw new Exception("No se puede superar el límite" + CAPACIDAD_MAXIMA);
+            //return "No se puede superar el límite" + CAPACIDAD_MAXIMA;
         }
         saldo += value; // saldo = saldo + value
         Transaction ingreso = new Transaction(value,"hoy", 1, "Ingreso de dinero");
@@ -64,6 +66,8 @@ public class Wallet {                                       // Siempre son públ
         return "Transacción exitosa, nuevo saldo" + saldo;   
     }
     
+
+
     public String takeMoney(int value){
         if(saldo < value){
             return "Saldo insuficiente";
@@ -105,5 +109,6 @@ public class Wallet {                                       // Siempre son públ
         }
 
     }
+
 
 }
